@@ -18,5 +18,7 @@ create table twitter.hashtag_count as
 	select hashtag, COUNT(*) as cnt
 	from twitter.hashtag_list
 	group by hashtag
-	order by cnt desc;	
+	order by cnt desc
+	limit 10;	
 	
+-- export count table from web browser interface
