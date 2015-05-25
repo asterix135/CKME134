@@ -12,7 +12,8 @@ create table twitter.hashtag_list as
 	from twitter.full_text_ts
 	lateral vieew explode(split(tweet, '\\s;)) tmp as hashtag
 	where hashtag REGEXP '^#';
-	
+
+-- Create count table	
 create table twitter.hashtag_count as
 	select hashtag, COUNT(*) as cnt
 	from twitter.mar6_all
