@@ -4,7 +4,7 @@
 -- Original source file full_txt.txt
 
 drop table twitter.hashtag_list;
-drop table twitter.hashtag_top10_v1;
+drop table twitter.hashtag_top10;
 		
 -- Create table of ids and extracted hashtags
 create table twitter.hashtag_list as
@@ -14,7 +14,7 @@ create table twitter.hashtag_list as
 	where hashtag REGEXP '^#';
 
 -- Create count table	
-create table twitter.hashtag_count as
+create table twitter.hashtag_top10 as
 	select hashtag, COUNT(*) as cnt
 	from twitter.hashtag_list
 	group by hashtag
