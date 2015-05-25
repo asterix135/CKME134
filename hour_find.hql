@@ -18,6 +18,4 @@ create table twitter.mar6_hour_count as
 	group by tweet_hour
 	order by cnt desc;
 
-set hive.exec.compress.output=false;
-
-dfs -get /apps/hive/warehouse/twitter.db/mar6_hour_count /home/lab
+-- export twitter.mar6_hour_count from web browser interface
