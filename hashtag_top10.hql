@@ -3,13 +3,19 @@
 -- Find top 10 hashtags
 -- Original source file full_txt.txt
 
+drop table twitter.hashtag_list;
 drop table twitter.hashtag_top10_v1;
-
-create table twitter.hashtag_top_10_v1 as
-	select id, ts, tweet,
-	regexp_extract(lower(tweet_element), 
-		'(.*)(#\\S+)\\s(.*)', 2) as hashtag
-	from twitter.full_text_ts_complex
-	lateral view explode(split(tweet, '\\s')) tmp as tweet_element
-	where trim(regexp_extract(lower(tweet_element),
-		'(.*)(#\\S+)\\s(.*)',2)) != "";
+		
+-- Create table of ids and extracted hashtags
+create table twitter.hashtag_list as
+	select id, hashtag
+	from twitter.full_text_ts
+	lateral vieew explode(split(tweet, '\\s;)) tmp as hashtag
+	where hashtag REGEXP '^#';
+	
+create table twitter.hashtag_count as
+	select hashtag, COUNT(*) as cnt
+	from twitter.mar6_all
+	group by hashtag
+	order by cnt desc;	
+	
