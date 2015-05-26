@@ -10,7 +10,7 @@ drop table twitter.hashtag_top10;
 create table twitter.hashtag_list as
 	select id, hashtag
 	from twitter.full_text_ts
-	lateral view explode(split(tweet, '\\s')) tmp as hashtag
+	lateral view explode(split(lower(tweet), '\\s')) tmp as hashtag
 	where hashtag REGEXP '^#';
 
 -- Create count table	
