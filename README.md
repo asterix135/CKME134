@@ -14,5 +14,5 @@ Note - to get CSV results files off Hive/Hadoop, use the web interface
 - [hashtag_top10.csv](https://github.com/asterix135/CKME134/blob/master/hashtag_top10.csv) - Query output for Question 2
 
 ### Question 3
-- need to reference code
-- need to reference output
+- [user_top10.hql](https://github.com/asterix135/CKME134/blob/master/user_top10.hql) - Code for Question 3 query
+- [user_top10.csv](https://github.com/asterix135/CKME134/blob/master/user_top10.csv) - Query output for Question 3
